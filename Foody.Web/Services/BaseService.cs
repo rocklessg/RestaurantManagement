@@ -40,13 +40,13 @@ namespace Foody.Web.Services
                 HttpResponseMessage apiResponse = null;
                 switch (apiRequest.ApiType)
                 {
-                    case ApiConstants.ApiType.POST:
+                    case ApiConstant.ApiType.POST:
                         message.Method = HttpMethod.Post;
                         break;
-                    case ApiConstants.ApiType.PUT:
+                    case ApiConstant.ApiType.PUT:
                         message.Method = HttpMethod.Put;
                         break;
-                    case ApiConstants.ApiType.DELETE:
+                    case ApiConstant.ApiType.DELETE:
                         message.Method = HttpMethod.Delete;
                         break;
                     default:

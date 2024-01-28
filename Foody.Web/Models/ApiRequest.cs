@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using static Foody.Web.ApiConstants;
+using static Foody.Web.ApiConstant;
 
 namespace Foody.Web.Models
 {
