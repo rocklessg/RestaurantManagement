@@ -1,6 +1,6 @@
 ﻿namespace Foody.Web
 {
-    public class ApiConstants
+    public class ApiConstant
     {
         public static string ProductAPIBase { get; set; }
         public enum ApiType
