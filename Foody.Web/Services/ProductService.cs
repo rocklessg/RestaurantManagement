@@ -18,7 +18,7 @@ namespace Foody.Web.Services
             {
                 ApiType = ApiConstant.ApiType.POST,
                 Data = productDto,
-                Url = ApiConstant.ProductAPIBase + "/api/products",
+                Url = ApiConstant.ProductAPIBase + "/api/product",
                 AccessToken = ""
             });
         }
@@ -28,7 +28,7 @@ namespace Foody.Web.Services
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = ApiConstant.ApiType.DELETE,
-                Url = ApiConstant.ProductAPIBase + "/api/products/"+id,
+                Url = ApiConstant.ProductAPIBase + "/api/product/"+id,
                 AccessToken = ""
             });
         }
@@ -38,7 +38,7 @@ namespace Foody.Web.Services
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = ApiConstant.ApiType.GET,
-                Url = ApiConstant.ProductAPIBase + "/api/products",
+                Url = ApiConstant.ProductAPIBase + "/api/product",
                 AccessToken = ""
             });
         }
@@ -48,7 +48,7 @@ namespace Foody.Web.Services
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = ApiConstant.ApiType.GET,
-                Url = ApiConstant.ProductAPIBase + "/api/products/"+id,
+                Url = ApiConstant.ProductAPIBase + "/api/product/"+id,
                 AccessToken = ""
             });
         }
@@ -59,7 +59,7 @@ namespace Foody.Web.Services
             {
                 ApiType = ApiConstant.ApiType.PUT,
                 Data = productDto,
-                Url = ApiConstant.ProductAPIBase + "/api/products",
+                Url = ApiConstant.ProductAPIBase + "/api/product",
                 AccessToken = ""
             });
         }
