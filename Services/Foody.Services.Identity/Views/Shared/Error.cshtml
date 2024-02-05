@@ -1,4 +1,47 @@
-﻿@model Foody.Services.Identity.Models.ErrorViewModel
+﻿@model ErrorViewModel
+
+@{
+    var error = Model?.Error?.Error;
+    var errorDescription = Model?.Error?.ErrorDescription;
+    var request_id = Model?.Error?.RequestId;
+}
+
+<div class="error-page">
+    <div class="lead">
+        <h1>Error</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="alert alert-danger">
+                Sorry, there was an error
+
+                @if (error != null)
+                {
+                    <strong>
+                        <em>
+                            : @error
+                        </em>
+                    </strong>
+
+                    if (errorDescription != null)
+                    {
+                        <div>@errorDescription</div>
+                    }
+                }
+            </div>
+
+            @if (request_id != null)
+            {
+                <div class="request-id">Request Id: @request_id</div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@* @model Foody.Services.Identity.Models.ErrorViewModel
 @{
     ViewData["Title"] = "Error";
 }
@@ -23,3 +66,4 @@
     For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
     and restarting the app.
 </p>
+ *@
