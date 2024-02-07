@@ -1,8 +1,10 @@
 using Foody.Services.Identity;
 using Foody.Services.Identity.DbContexts;
+using Foody.Services.Identity.Initializer;
 using Foody.Services.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +27,12 @@ var identityServerConfig = builder.Services.AddIdentityServer(options =>
 .AddInMemoryClients(StaticDetails.Clients)
 .AddAspNetIdentity<ApplicationUser>();
 
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 identityServerConfig.AddDeveloperSigningCredential();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -45,6 +48,14 @@ app.UseRouting();
 app.UseIdentityServer();
 app.UseAuthorization();
 
+// Seed data at the first running of the application, if the db has no data 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var dbInitializer = services.GetRequiredService<IDbInitializer>();
+    dbInitializer.Initialize();
+}
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
