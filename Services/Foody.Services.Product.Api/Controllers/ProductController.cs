@@ -20,6 +20,7 @@ namespace Foody.Services.ProductApi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<object> Get()
         {
             try
@@ -56,7 +57,7 @@ namespace Foody.Services.ProductApi.Controllers
 
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public async Task<object> Post([FromBody] ProductDto productDto)
         {
             try
@@ -75,7 +76,7 @@ namespace Foody.Services.ProductApi.Controllers
 
 
         [HttpPut]
-       // [Authorize]
+        [Authorize]
         public async Task<object> Put([FromBody] ProductDto productDto)
         {
             try
@@ -92,8 +93,13 @@ namespace Foody.Services.ProductApi.Controllers
             return _response;
         }
 
+        /// <summary>
+        /// This endpoint is used to delete a product permanently.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("{id}")]
         public async Task<object> Delete(int id)
         {
