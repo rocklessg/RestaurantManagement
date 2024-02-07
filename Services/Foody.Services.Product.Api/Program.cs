@@ -28,7 +28,7 @@ builder.Services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
 
-                    options.Authority = builder.Configuration.GetSection("ProductApiConfig:IdentityServerUrl").Value;
+                    options.Authority = builder.Configuration["ProductApiConfig:IdentityServerUrl"];
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateAudience = false
