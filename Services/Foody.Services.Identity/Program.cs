@@ -1,7 +1,9 @@
+using Duende.IdentityServer.Services;
 using Foody.Services.Identity;
 using Foody.Services.Identity.DbContexts;
 using Foody.Services.Identity.Initializer;
 using Foody.Services.Identity.Models;
+using Foody.Services.Identity.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +29,7 @@ var identityServerConfig = builder.Services.AddIdentityServer(options =>
 .AddAspNetIdentity<ApplicationUser>();
 
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 identityServerConfig.AddDeveloperSigningCredential();
 builder.Services.AddControllersWithViews();
