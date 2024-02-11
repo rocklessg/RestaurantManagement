@@ -38,7 +38,7 @@ namespace Foody.Services.Identity
                 ClientSecrets= { new Secret("secret".Sha256())},
                 AllowedGrantTypes = GrantTypes.Code,
                 RedirectUris={ "https://localhost:44354/signin-oidc", "https://localhost:7151/signin-oidc" },
-                PostLogoutRedirectUris={"https://localhost:44354/signout-callback-oidc" },
+                PostLogoutRedirectUris={"https://localhost:44354/signout-callback-oidc", "https://localhost:7151/signout-callback-oidc" },
                 AllowedScopes=new List<string>
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
