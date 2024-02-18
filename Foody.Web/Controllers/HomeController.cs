@@ -35,7 +35,7 @@ namespace Foody.Web.Controllers
         {
 
             return RedirectToAction(nameof(Index));
-        }
+         }
 
         public IActionResult Logout()
         {
