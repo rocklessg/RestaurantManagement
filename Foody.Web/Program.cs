@@ -2,6 +2,7 @@ using Foody.Web.Services.IServices;
 using Foody.Web.Services;
 using Foody.Web;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,10 @@ builder.Services.AddHttpClient<IProductService, ProductService>();
 ApiConstant.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Logging.AddConsole();  // Log to the console
+builder.Logging.AddDebug();    // Log to the Debug output
+//builder.Logging.AddFile("Logs/mylog-{Date}.txt");  // Log to a file
+
 builder.Services.AddControllersWithViews();
 
 #region Configure IdentityServer Auth
